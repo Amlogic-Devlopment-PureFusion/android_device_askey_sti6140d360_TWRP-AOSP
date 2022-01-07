@@ -1,0 +1,1 @@
+# android_device_askey_sti6140d360_TWRP-AOSP
