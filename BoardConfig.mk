@@ -31,10 +31,13 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Dynamic Partition
+BOARD_ONN_DYNAMIC_PARTITIONS_SIZE := 1677721600
 BOARD_SUPER_PARTITION_GROUPS := onn_dynamic_partitions
 BOARD_ONN_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
-    vendor
+    vendor \
+		product \
+		odm
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.dynamic_partitions=true androidboot.dtbo_idx=0 androidboot.boot_devices=ffe07000.emmc buildvariant=user
