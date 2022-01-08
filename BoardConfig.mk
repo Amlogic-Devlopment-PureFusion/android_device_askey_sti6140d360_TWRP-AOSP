@@ -89,11 +89,11 @@ TW_NO_BATT_PERCENT := true
 # exclude SuperSu e.g. to save some space or for different other reasons (supersu still included bx default?)
 TW_EXCLUDE_SUPERSU := true
 # remove TrueType fonts
-TW_DISABLE_TTF:= true
+#TW_DISABLE_TTF:= true
 # Set the default language, if not english
 TW_DEFAULT_LANGUAGE := en-US
 # building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
-TW_OEM_BUILD := true
+#TW_OEM_BUILD := true
 
 # Debug
 TARGET_USES_LOGD := true
@@ -111,7 +111,7 @@ PLATFORM_VERSION := 16.1.0
 TW_EXCLUDE_SUPERSU := true
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_HAS_MTP := true
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+#TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 # Tool
 TW_INCLUDE_REPACKTOOLS := true
