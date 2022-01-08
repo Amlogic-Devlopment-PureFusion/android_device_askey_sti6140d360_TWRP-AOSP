@@ -71,6 +71,15 @@ BOARD_TOUCH_RECOVERY :=
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 BOARD_RECOVERY_SWIPE := true
+BOARD_HAS_NO_REAL_SDCARD := true
+# No screen timeout
+TW_NO_SCREEN_TIMEOUT := true
+# Disable the battery percentage for devices where it doesn't work properly
+TW_NO_BATT_PERCENT := true
+# Set the default language, if not english
+TW_DEFAULT_LANGUAGE := en-US
+# include Logcat daemon for help in debugging
+TWRP_INCLUDE_LOGCAT := true
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
@@ -89,7 +98,7 @@ TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP :=true
 
 # TWRP Configuration
-TW_THEME := portrait_hdpi
+TW_THEME := landscape_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
