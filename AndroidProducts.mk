@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_sti6140d360.mk
+    $(LOCAL_DIR)/cm_sti6140d360.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_sti6140d360-user \
-    twrp_sti6140d360-userdebug \
-    twrp_sti6140d360-eng
+    cm_sti6140d360-user \
+    cm_sti6140d360-userdebug \
+    cm_sti6140d360-eng

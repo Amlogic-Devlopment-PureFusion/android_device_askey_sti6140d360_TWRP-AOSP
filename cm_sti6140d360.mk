@@ -16,11 +16,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/askey/sti6140d360/device.mk)
 
 # Inherit some common twrp stuff.
-$(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, vendor/cm/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sti6140d360
-PRODUCT_NAME := twrp_sti6140d360
+PRODUCT_NAME := cm_sti6140d360
 PRODUCT_BRAND := Onn
 PRODUCT_MODEL := sti6140d360
 PRODUCT_MANUFACTURER := askey
