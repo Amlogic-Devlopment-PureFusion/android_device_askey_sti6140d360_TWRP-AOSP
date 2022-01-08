@@ -11,11 +11,36 @@ DEVICE_PATH := device/askey/sti6140d360
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
+#TARGET_ARCH := arm
+#TARGET_ARCH_VARIANT := armv7-a-neon
+#TARGET_CPU_ABI := armeabi-v7a
+#TARGET_CPU_ABI2 := armeabi
+#TARGET_CPU_VARIANT := generic
+
+# Architecture
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_SMP := true
+TARGET_USES_64_BIT_BINDER := true
+ENABLE_CPUSETS := true
+
+# Platform
+BOARD_VENDOR := amlogic
+TARGET_SOC := s905x2
+TARGET_BOARD_HARDWARE := amlogic
+TARGET_BOARD_PLATFORM := g12a
+#TARGET_BOARD_PLATFORM := sti6140d360
+TARGET_BOARD_PLATFORM_GPU := mali-g31mp2
+TARGET_BOOTLOADER_BOARD_NAME := u212
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Graphics
+BOARD_EGL_CFG := $(DEVICE_FOLDER)/egl.cfg
+USE_OPENGL_RENDERER := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := sti6140d360
@@ -63,9 +88,6 @@ TARGET_KERNEL_CONFIG := sti6140d360_defconfig
 
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
 
-# Platform
-TARGET_BOARD_PLATFORM := sti6140d360
-
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
 
@@ -73,41 +95,13 @@ BOARD_AVB_ENABLE := false
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_TOUCH_RECOVERY :=
-TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 BOARD_RECOVERY_SWIPE := true
 BOARD_HAS_NO_REAL_SDCARD := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
-
-# No screen timeout
-TW_NO_SCREEN_TIMEOUT := true
-# don't blank screen (available optional inside recovery settings too)
-TW_NO_SCREEN_BLANK := true
-# Disable the battery percentage for devices where it doesn't work properly
-TW_NO_BATT_PERCENT := true
-# exclude SuperSu e.g. to save some space or for different other reasons (supersu still included bx default?)
-TW_EXCLUDE_SUPERSU := true
-# remove TrueType fonts
-#TW_DISABLE_TTF:= true
-# Set the default language, if not english
-TW_DEFAULT_LANGUAGE := en-US
-# building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
-#TW_OEM_BUILD := true
-
-# Debug
-TARGET_USES_LOGD := true
-# include Logcat daemon for help in debugging
-TWRP_INCLUDE_LOGCAT := true
-TWRP_EVENT_LOGGING := false
-
-# Hack: prevent anti rollback
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 16.1.0
-
-
 # Misc
+# exclude SuperSu e.g. to save some space or for different other reasons (supersu still included bx default?)
 TW_EXCLUDE_SUPERSU := true
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_HAS_MTP := true
@@ -118,10 +112,41 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP :=true
 
-# TWRP Configuration
+# Debug
+TARGET_USES_LOGD := true
+# include Logcat daemon for help in debugging
+TWRP_INCLUDE_LOGCAT := true
+TWRP_EVENT_LOGGING := false
+
+# TWRP specific build flags
+RECOVERY_VARIANT := twrp
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
 TW_THEME := landscape_hdpi
-TW_EXTRA_LANGUAGES := false
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_NO_REBOOT_BOOTLOADER := true
+TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_CRYPTO := true
+TW_EXTRA_LANGUAGES := true
+TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
+TW_NO_BATT_PERCENT := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_NO_LEGACY_PROPS := true
+### ----------------------------------- ###
+TW_EXTRA_LANGUAGES := false
+#TW_SCREEN_BLANK_ON_BOOT := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+# Set the default language, if not english
+TW_DEFAULT_LANGUAGE := en-US
+# remove TrueType fonts
+#TW_DISABLE_TTF:= true
+# building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
+#TW_OEM_BUILD := true
 TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
+
+# Hack: prevent anti rollback
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 16.1.0
