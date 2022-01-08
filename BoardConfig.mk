@@ -82,10 +82,18 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 
 # No screen timeout
 TW_NO_SCREEN_TIMEOUT := true
+# don't blank screen (available optional inside recovery settings too)
+TW_NO_SCREEN_BLANK := true
 # Disable the battery percentage for devices where it doesn't work properly
 TW_NO_BATT_PERCENT := true
+# exclude SuperSu e.g. to save some space or for different other reasons (supersu still included bx default?)
+TW_EXCLUDE_SUPERSU := true
+# remove TrueType fonts
+TW_DISABLE_TTF:= true
 # Set the default language, if not english
 TW_DEFAULT_LANGUAGE := en-US
+# building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
+TW_OEM_BUILD := true
 
 # Debug
 TARGET_USES_LOGD := true
@@ -103,6 +111,7 @@ PLATFORM_VERSION := 16.1.0
 TW_EXCLUDE_SUPERSU := true
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_HAS_MTP := true
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 # Tool
 TW_INCLUDE_REPACKTOOLS := true
@@ -110,8 +119,8 @@ TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP :=true
 
 # TWRP Configuration
-TW_THEME := landscape_mdpi
-TW_EXTRA_LANGUAGES := true
+TW_THEME := landscape_hdpi
+TW_EXTRA_LANGUAGES := false
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
