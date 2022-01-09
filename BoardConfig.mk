@@ -48,6 +48,7 @@ TARGET_OTA_ASSERT_DEVICE := sti6140d360
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 #BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824 # This is the maximum known partition size, but it can be higher, so we just omit it
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 26464256
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -86,31 +87,18 @@ TARGET_KERNEL_HEADER_ARCH := arm
 TARGET_KERNEL_SOURCE := kernel/askey/sti6140d360
 TARGET_KERNEL_CONFIG := sti6140d360_defconfig
 
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
-
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_TOUCH_RECOVERY :=
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-BOARD_RECOVERY_SWIPE := true
-BOARD_HAS_NO_REAL_SDCARD := true
-BOARD_SUPPRESS_SECURE_ERASE := true
+# auto copy files placed in device/$VENDOR/$DEVICENAME/recovery/root inside recovery ramdisk (e.g. init.recivery*.rc which get removed from recoveryramdisk by default).
+# example: for Onn Android TV Box ( set your device tree's location )
+TARGET_RECOVERY_DEVICE_DIRS += device/askey/sti6140d360
 
 # Misc
-# exclude SuperSu e.g. to save some space or for different other reasons (supersu still included bx default?)
-TW_EXCLUDE_SUPERSU := true
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_HAS_MTP := true
 #TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-
-# Tool
-TW_INCLUDE_REPACKTOOLS := true
-TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_LIBRESETPROP :=true
 
 # Debug
 TARGET_USES_LOGD := true
@@ -118,19 +106,54 @@ TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 TWRP_EVENT_LOGGING := false
 
+# remove TrueType fonts
+#TW_DISABLE_TTF:= true
+
+# building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
+#TW_OEM_BUILD := true
+
+# TWRP recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
+# TWRP Theme BOARD_SUPER_PARTITION_GROUPS
+TW_THEME := landscape_hdpi
+
+# Set the default language, if not english
+TW_DEFAULT_LANGUAGE := en-US
+
+# disables things like sdcard partitioning and may save you some space if TWRP isn't fitting in your recovery patition
+BOARD_HAS_NO_REAL_SDCARD := true
+
+# Disable the battery percentage for devices where it doesn't work properly
+TW_NO_BATT_PERCENT := true
+
+# Decryption support for /data
+TW_INCLUDE_CRYPTO := true
+
+# Set the path to the sysfs entry which controls the brightness
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+
+# Max brightness to prevent display damage
+TW_MAX_BRIGHTNESS := 255
+
+# Default brightness for TWRP
+TW_DEFAULT_BRIGHTNESS := 150
+
+# Remove SuperSU and stop TWRP prompts to install it
+TW_EXCLUDE_SUPERSU := true
+
 # TWRP specific build flags
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_TOUCH_RECOVERY :=
+BOARD_RECOVERY_SWIPE := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_VARIANT := twrp
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
-TW_THEME := landscape_hdpi
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_NO_REBOOT_BOOTLOADER := true
 TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_CRYPTO := true
-TW_EXTRA_LANGUAGES := true
 TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
-TW_NO_BATT_PERCENT := true
 TW_NO_SCREEN_TIMEOUT := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_LEGACY_PROPS := true
@@ -138,15 +161,14 @@ TW_NO_LEGACY_PROPS := true
 TW_EXTRA_LANGUAGES := false
 #TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-# Set the default language, if not english
-TW_DEFAULT_LANGUAGE := en-US
-# remove TrueType fonts
-#TW_DISABLE_TTF:= true
-# building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
-#TW_OEM_BUILD := true
 TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
+
+# Tool
+#TW_INCLUDE_REPACKTOOLS := true
+#TW_INCLUDE_RESETPROP := true
+#TW_INCLUDE_LIBRESETPROP :=true
