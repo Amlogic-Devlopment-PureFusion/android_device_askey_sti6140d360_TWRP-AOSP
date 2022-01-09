@@ -14,6 +14,8 @@
 /param          ext4     /dev/block/param          flags=display="Param";backup=1
 /product        ext4     /dev/block/product        flags=display="Product";backup=1
 /product_image  emmc     /dev/block/product        flags=display="Product image";backup=1;flashimg=1;
+/super          ext4     /dev/block/super          flags=display="Super";backup=1
+/super_image    emmc     /dev/block/super          flags=display="Super image";backup=1;flashimg=1;
 /metadata       ext4     /dev/block/metadata       flags=display="Metadata"
 /tee            ext4     /dev/block/tee            flags=display="Tee"
 /cache          ext4     /dev/block/cache          flags=display="Cache"
