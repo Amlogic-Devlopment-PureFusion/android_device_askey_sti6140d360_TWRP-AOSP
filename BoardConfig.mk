@@ -158,7 +158,7 @@ TW_INCLUDE_NTFS_3G := true
 TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
 TW_NO_SCREEN_TIMEOUT := true
-TW_NO_REBOOT_BOOTLOADER := true
+#TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_LEGACY_PROPS := true
 ### ----------------------------------- ###
 TW_EXTRA_LANGUAGES := false
