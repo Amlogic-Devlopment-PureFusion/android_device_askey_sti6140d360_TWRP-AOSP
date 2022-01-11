@@ -11,13 +11,6 @@ DEVICE_PATH := device/askey/sti6140d360
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
-#TARGET_ARCH := arm
-#TARGET_ARCH_VARIANT := armv7-a-neon
-#TARGET_CPU_ABI := armeabi-v7a
-#TARGET_CPU_ABI2 := armeabi
-#TARGET_CPU_VARIANT := generic
-
-# Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := armeabi-v7a
@@ -50,11 +43,19 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 #BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824 # This is the maximum known partition size, but it can be higher, so we just omit it
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 26464256
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
+
+# exFAT FS Support
+TW_INCLUDE_FUSE_EXFAT := true
+
+# NTFS Support
+TW_INCLUDE_FUSE_NTFS := true
 
 # Dynamic Partition
 BOARD_ONN_DYNAMIC_PARTITIONS_SIZE := 1677721600
@@ -88,7 +89,15 @@ TARGET_KERNEL_SOURCE := kernel/askey/sti6140d360
 TARGET_KERNEL_CONFIG := sti6140d360_defconfig
 
 # Android Verified Boot
-BOARD_AVB_ENABLE := false
+#BOARD_AVB_ENABLE := false
+# Avb
+BOARD_AVB_ENABLE := true
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+
 
 # Recovery
 # auto copy files placed in device/$VENDOR/$DEVICENAME/recovery/root inside recovery ramdisk (e.g. init.recivery*.rc which get removed from recoveryramdisk by default).
@@ -161,6 +170,7 @@ TW_NO_SCREEN_TIMEOUT := true
 #TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_LEGACY_PROPS := true
 ### ----------------------------------- ###
+TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
 #TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
