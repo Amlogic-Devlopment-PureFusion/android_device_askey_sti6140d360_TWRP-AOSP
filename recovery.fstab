@@ -4,34 +4,35 @@
 /vbmeta         emmc     /dev/block/vbmeta         flags=display="Vbmeta";backup=1;
 /recovery       emmc     /dev/block/recovery       flags=display="Recovery";backup=1;flashimg=1;
 /boot           emmc     /dev/block/boot           flags=display="Boot";backup=1;flashimg=1;
+/dtbo           emmc     /dev/block/dtbo           flags=display="Dtbo";backup=1;flashimg=1;
 /misc           emmc     /dev/block/misc           flags=display="Misc";backup=1;flashimg=1;wipeingui;
-/system         ext4     /dev/block/dm-4           flags=display="System";backup=1;
-/system_image   emmc     /dev/block/dm-4           flags=display="System image";backup=1;flashimg=1;
-/vendor         ext4     /dev/block/dm-5           flags=display="Vendor";backup=1;
-/vendor_image   emmc     /dev/block/dm-5           flags=display="Vendor image";backup=1;flashimg=1;
-/odm            ext4     /dev/block/dm-3           flags=display="Odm";backup=1;
-/odm_image      emmc     /dev/block/dm-3           flags=display="Odm image";backup=1;flashimg=1;
+# /system         ext4     /dev/block/dm-4           flags=display="System";backup=1
+# /system_image   emmc     /dev/block/dm-4           flags=display="System image";backup=1;flashimg=1;
+/system         ext4     system                    flags=display="System";backup=1;flashimg=1;logical;
+/system_image   emmc     system                    flags=display="System image";backup=1;flashimg=1;logical;
+/system_ext     ext4     system_ext                flags=display="System_ext";backup=1;logical;
+/vendor         ext4     vendor                    flags=display="Vendor";backup=1;logical;
+/vendor_image   emmc     vendor                    flags=display="Vendor image";backup=1;flashimg=1;logical
+# /vendor         ext4     /dev/block/dm-5           flags=display="Vendor";backup=1;
+# /vendor_image   emmc     /dev/block/dm-5           flags=display="Vendor image";backup=1;flashimg=1;
+/odm            ext4     odm                         flags=display="Odm";backup=1;logical;
+/odm_image      emmc     odm                         flags=display="Odm image";backup=1;flashimg=1;logical;
+/product        ext4     product                     flags=display="Product";backup=1;logical;
+/product_image  emmc     product                     flags=display="Product image";backup=1;flashimg=1;logical;
+# /odm            ext4     /dev/block/dm-3           flags=display="Odm";backup=1;
+# /odm_image      emmc     /dev/block/dm-3           flags=display="Odm image";backup=1;flashimg=1;
 /param          ext4     /dev/block/param          flags=display="Param";backup=1;
-/product        ext4     /dev/block/dm-0           flags=display="Product";backup=1;
-/product_image  emmc     /dev/block/dm-0           flags=display="Product image";backup=1;flashimg=1;
+# /product        ext4     /dev/block/dm-0           flags=display="Product";backup=1;
+# /product_image  emmc     /dev/block/dm-0           flags=display="Product image";backup=1;flashimg=1;
 /metadata       ext4     /dev/block/metadata       flags=display="Metadata";
 /tee            ext4     /dev/block/tee            flags=display="Tee";
 /cache          ext4     /dev/block/cache          flags=display="Cache";wipeingui;
 /data           ext4     /dev/block/data           flags=display="Data";encryptable=footer;wipeingui;
-/sdcard1        vfat     /dev/block/mmcblk1p1      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk1p2      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk1p3      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk1p4      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk1p5      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk1p6      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p1      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p2      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p3      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p4      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p5      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk2p6      flags=display="Sdcard1";
-/sdcard1        vfat     /dev/block/mmcblk         flags=display="Sdcard1";
-/udisk          auto     /dev/block/sd##           flags=display="Udisk";
-# Removable storage
+/loop           auto     loop                    flags=display="Loop";logical;
+none            swap     /dev/block/zram0        flags=display="None";
+/sd*            auto     auto                    flags=display="Sd*";logical;
+/sd*            auto     auto                    flags=display="Sd*";logical;
+/sr*            auto     auto                    flags=display="Sr*";logical;
+###  Removable storage ###
 /external_sd    auto    /dev/block/mmcblk1p1   flags=storage;wipeingui;removable;
 /usb-otg        auto    /dev/block/sda1        flags=storage;wipeingui;removable;
