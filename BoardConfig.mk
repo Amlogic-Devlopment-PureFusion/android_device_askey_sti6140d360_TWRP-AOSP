@@ -51,11 +51,15 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
+# Metadata
+BOARD_USES_METADATA_PARTITION := true
+
 # exFAT FS Support
 TW_INCLUDE_FUSE_EXFAT := true
 
 # NTFS Support
 TW_INCLUDE_FUSE_NTFS := true
+TW_INCLUDE_NTFS_3G := true
 
 # Dynamic Partition
 BOARD_ONN_DYNAMIC_PARTITIONS_SIZE := 1677721600
@@ -128,16 +132,15 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TW_THEME := landscape_hdpi
 
 # Set the default language, if not english
-TW_DEFAULT_LANGUAGE := en-US
+TW_DEFAULT_LANGUAGE := en
 
 # disables things like sdcard partitioning and may save you some space if TWRP isn't fitting in your recovery patition
 BOARD_HAS_NO_REAL_SDCARD := true
 
+BOARD_HAS_SDCARD_INTERNAL := true
+
 # Disable the battery percentage for devices where it doesn't work properly
 TW_NO_BATT_PERCENT := true
-
-# Decryption support for /data
-TW_INCLUDE_CRYPTO := true
 
 # Set the path to the sysfs entry which controls the brightness
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -152,11 +155,11 @@ TW_DEFAULT_BRIGHTNESS := 150
 TW_EXCLUDE_SUPERSU := true
 
 # Disable/enable SELinux. Only suggested when you want to enable SELinux support
-TWHAVE_SELINUX := true
+#TWHAVE_SELINUX := true
 
 # TWRP specific build flags
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "BGRA_8888"
+#TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_TOUCH_RECOVERY :=
 BOARD_RECOVERY_SWIPE := true
@@ -173,6 +176,7 @@ TW_NO_LEGACY_PROPS := true
 TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
 #TW_SCREEN_BLANK_ON_BOOT := true
+TW_NO_HAPTICS := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
 
@@ -180,6 +184,12 @@ TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
+
+# Decryption support for /data
+TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # Tool
 #TW_INCLUDE_REPACKTOOLS := true
