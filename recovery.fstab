@@ -10,7 +10,6 @@
 # /system_image   emmc     /dev/block/dm-4           flags=display="System image";backup=1;flashimg=1;
 /system         ext4     system                    flags=display="System";backup=1;flashimg=1;logical;
 /system_image   emmc     system                    flags=display="System image";backup=1;flashimg=1;logical;
-/system_ext     ext4     system_ext                flags=display="System_ext";backup=1;logical;
 /vendor         ext4     vendor                    flags=display="Vendor";backup=1;logical;
 /vendor_image   emmc     vendor                    flags=display="Vendor image";backup=1;flashimg=1;logical
 # /vendor         ext4     /dev/block/dm-5           flags=display="Vendor";backup=1;
@@ -28,11 +27,10 @@
 /tee            ext4     /dev/block/tee            flags=display="Tee";
 /cache          ext4     /dev/block/cache          flags=display="Cache";wipeingui;
 /data           ext4     /dev/block/data           flags=display="Data";encryptable=footer;wipeingui;
-/loop           auto     loop                    flags=display="Loop";logical;
-none            swap     /dev/block/zram0        flags=display="None";
+none            swap     /dev/block/zram0          flags=display="None";
+/udisk          auto     /dev/block/sd##           flags=display="Udisk";
 /sd*            auto     auto                    flags=display="Sd*";logical;
 /sd*            auto     auto                    flags=display="Sd*";logical;
 /sr*            auto     auto                    flags=display="Sr*";logical;
 ###  Removable storage ###
-/external_sd    auto    /dev/block/mmcblk1p1   flags=storage;wipeingui;removable;
 /usb-otg        auto    /dev/block/sda1        flags=storage;wipeingui;removable;
