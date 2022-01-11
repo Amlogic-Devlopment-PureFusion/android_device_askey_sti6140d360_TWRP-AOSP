@@ -120,7 +120,7 @@ TWRP_INCLUDE_LOGCAT := true
 TWRP_EVENT_LOGGING := false
 
 # remove TrueType fonts
-#TW_DISABLE_TTF:= true
+TW_DISABLE_TTF:= true
 
 # building of an OEM friendly TWRP. excludes SuperSu, uses Toolbox instead busybox, disables themeing
 #TW_OEM_BUILD := true
