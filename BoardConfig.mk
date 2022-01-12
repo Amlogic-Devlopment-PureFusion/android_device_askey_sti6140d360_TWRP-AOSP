@@ -128,6 +128,9 @@ TWRP_EVENT_LOGGING := false
 # TWRP recovery.fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
+# Supply a custom init.rc for the recovery
+TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.amlogic.rc
+
 # TWRP Theme BOARD_SUPER_PARTITION_GROUPS
 TW_THEME := landscape_hdpi
 
