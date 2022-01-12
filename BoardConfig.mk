@@ -139,9 +139,6 @@ BOARD_HAS_NO_REAL_SDCARD := true
 
 BOARD_HAS_SDCARD_INTERNAL := true
 
-# Disable the battery percentage for devices where it doesn't work properly
-TW_NO_BATT_PERCENT := true
-
 # Set the path to the sysfs entry which controls the brightness
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 
@@ -158,25 +155,21 @@ TW_EXCLUDE_SUPERSU := true
 #TWHAVE_SELINUX := true
 
 # TWRP specific build flags
+RECOVERY_VARIANT := twrp
+RECOVERY_SDCARD_ON_DATA := true
 #TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_TOUCH_RECOVERY :=
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
-RECOVERY_VARIANT := twrp
-RECOVERY_SDCARD_ON_DATA := true
-TW_INCLUDE_NTFS_3G := true
 TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
-TW_NO_SCREEN_TIMEOUT := true
-#TW_NO_REBOOT_BOOTLOADER := true
-TW_NO_LEGACY_PROPS := true
-### ----------------------------------- ###
+TW_INCLUDE_NTFS_3G := true
+
 TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
-#TW_SCREEN_BLANK_ON_BOOT := true
-TW_NO_HAPTICS := true
+TW_SCREEN_BLANK_ON_BOOT := false
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
 
@@ -195,3 +188,12 @@ BOARD_USES_METADATA_PARTITION := false
 #TW_INCLUDE_REPACKTOOLS := true
 #TW_INCLUDE_RESETPROP := true
 #TW_INCLUDE_LIBRESETPROP :=true
+
+### ----------------------------------- ###
+### TW NO'S ###
+TW_NO_SCREEN_TIMEOUT := true
+TW_NO_HAPTICS := true
+TW_NO_LEGACY_PROPS := true
+# Disable the battery percentage for devices where it doesn't work properly
+TW_NO_BATT_PERCENT := true
+### ----------------------------------- ###
