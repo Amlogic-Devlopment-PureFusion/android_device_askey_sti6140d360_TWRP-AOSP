@@ -103,7 +103,7 @@ TARGET_KERNEL_CONFIG := sti6140d360_defconfig
 # Recovery
 # auto copy files placed in device/$VENDOR/$DEVICENAME/recovery/root inside recovery ramdisk (e.g. init.recivery*.rc which get removed from recoveryramdisk by default).
 # example: for Onn Android TV Box ( set your device tree's location )
-TARGET_RECOVERY_DEVICE_DIRS += device/askey/sti6140d360
+#TARGET_RECOVERY_DEVICE_DIRS += device/askey/sti6140d360
 
 # Misc
 TW_MTP_DEVICE := /dev/mtp_usb
@@ -159,12 +159,12 @@ RECOVERY_SDCARD_ON_DATA := true
 #TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_RECOVERY_FORCE_PIXEL_FORMAT := "RGB_565"
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_TOUCH_RECOVERY :=
+#BOARD_TOUCH_RECOVERY :=
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
-TW_INCLUDE_NTFS_3G := true
+#TW_INCLUDE_NTFS_3G := true
 
 TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
