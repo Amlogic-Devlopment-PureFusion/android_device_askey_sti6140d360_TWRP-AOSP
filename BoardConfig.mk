@@ -130,6 +130,8 @@ TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.amlogic.rc
 
 # TWRP Theme BOARD_SUPER_PARTITION_GROUPS
 TW_THEME := landscape_hdpi
+# Old is gold. Put false to use the old one.
+TWRP_NEW_THEME := true
 
 # Set the default language, if not english
 TW_DEFAULT_LANGUAGE := en
