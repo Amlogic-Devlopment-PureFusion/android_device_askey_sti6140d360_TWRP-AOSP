@@ -190,9 +190,15 @@ PLATFORM_VERSION := 16.1.0
 
 # Decryption support for /data
 #TARGET_HW_DISK_ENCRYPTION := true
-TW_INCLUDE_CRYPTO := false
+TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
+
+#TW_INCLUDE_FBE := true
+#TARGET_HW_DISK_ENCRYPTION := true
+#TARGET_LEGACY_HW_DISK_ENCRYPTION := true
+#Enable SW based full disk encryption
+#TARGET_SWV8_DISK_ENCRYPTION := false
 
 # Tool
 #TW_INCLUDE_REPACKTOOLS := true
