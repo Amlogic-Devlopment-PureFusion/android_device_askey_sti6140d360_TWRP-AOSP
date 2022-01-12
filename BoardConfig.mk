@@ -148,9 +148,6 @@ TW_MAX_BRIGHTNESS := 255
 # Default brightness for TWRP
 TW_DEFAULT_BRIGHTNESS := 150
 
-# Remove SuperSU and stop TWRP prompts to install it
-TW_EXCLUDE_SUPERSU := true
-
 # Disable/enable SELinux. Only suggested when you want to enable SELinux support
 #TWHAVE_SELINUX := true
 
