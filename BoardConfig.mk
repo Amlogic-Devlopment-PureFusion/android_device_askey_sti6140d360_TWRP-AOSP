@@ -139,7 +139,7 @@ TW_DEFAULT_LANGUAGE := en
 # disables things like sdcard partitioning and may save you some space if TWRP isn't fitting in your recovery patition
 BOARD_HAS_NO_REAL_SDCARD := true
 
-BOARD_HAS_SDCARD_INTERNAL := true
+#BOARD_HAS_SDCARD_INTERNAL := true
 
 # Set the path to the sysfs entry which controls the brightness
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
