@@ -54,9 +54,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
 
-# exFAT FS Support
-TW_INCLUDE_FUSE_EXFAT := true
-
 # NTFS Support
 TW_INCLUDE_FUSE_NTFS := true
 TW_INCLUDE_NTFS_3G := true
@@ -199,4 +196,6 @@ TW_NO_HAPTICS := true
 TW_NO_LEGACY_PROPS := true
 # Disable the battery percentage for devices where it doesn't work properly
 TW_NO_BATT_PERCENT := true
+# Remove exFAT formatting binaries
+TW_NO_EXFAT := true
 ### ----------------------------------- ###
