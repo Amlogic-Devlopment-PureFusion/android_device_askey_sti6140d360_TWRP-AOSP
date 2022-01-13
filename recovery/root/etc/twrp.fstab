@@ -4,22 +4,27 @@
 
 # mount point   fstype  device                 flags
 
-/boot           emmc    /dev/block/boot        flags=backup=1
-/recovery       emmc    /dev/block/recovery
-/logo           emmc    /dev/block/logo        flags=backup=1;flashimg;display=Logo
-/misc           emmc    /dev/block/misc
-/vbmeta         emmc    /dev/block/vbmeta
-
-/system_root    ext4    /dev/block/system      flags=backup=1;display="System"
-/system_image   emmc    /dev/block/system      flags=backup=1;flashimg
-/vendor         ext4    /dev/block/vendor      flags=backup=1
-/vendor_image   emmc    /dev/block/vendor      flags=backup=1;flashimg
-/product        ext4    /dev/block/product     flags=backup=1;display="Product"
-/product_image  emmc    /dev/block/product     flags=backup=1;flashimg;display="Product Image"
-/odm            ext4    /dev/block/odm         flags=wipeingui;backup=1;display="ODM"
-/odm_image      emmc    /dev/block/odm         flags=backup=1;flashimg;display="ODM Image"
-/cache          ext4    /dev/block/cache       flags=backup=1
-/data           ext4    /dev/block/data
+/bootloader     emmc     /dev/block/bootloader     flags=display="Bootloader";backup=1;flashimg=1;
+/logo           emmc     /dev/block/logo           flags=display="Logo";backup=1;flashimg=1;
+/vbmeta         emmc     /dev/block/vbmeta         flags=display="Vbmeta";backup=1;
+/recovery       emmc     /dev/block/recovery       flags=display="Recovery";backup=1;flashimg=1;
+/boot           emmc     /dev/block/boot           flags=display="Boot";backup=1;flashimg=1;
+/dtbo           emmc     /dev/block/dtbo           flags=display="Dtbo";backup=1;flashimg=1;
+/misc           emmc     /dev/block/misc           flags=display="Misc";backup=1;flashimg=1;wipeingui;
+/system_root    ext4     system                    flags=display="System";backup=1;flashimg=1;wipeingui;logical;
+/system_image   emmc     /dev/block/dm-2           flags=display="System image";backup=1;flashimg=1;
+/vendor         ext4     vendor                    flags=display="Vendor";backup=1;wipeingui;logical;
+/vendor_image   emmc     /dev/block/dm-1           flags=display="Vendor image";backup=1;flashimg=1;
+/odm            ext4     odm                       flags=display="Odm";backup=1;logical;
+/odm_image      emmc     /dev/block/dm-3           flags=display="Odm image";backup=1;flashimg=1;
+/product        ext4     product                   flags=display="Product";backup=1;logical;
+/product_image  emmc     /dev/block/dm-0           flags=display="Product image";backup=1;flashimg=1;
+/param          ext4     /dev/block/param          flags=display="Param";backup=1;
+/metadata       ext4     /dev/block/metadata       flags=display="Metadata";backup=1;
+/tee            ext4     /dev/block/tee            flags=display="Tee";
+/cache          ext4     /dev/block/cache          flags=display="Cache";wipeingui;
+/data           ext4     /dev/block/data           flags=display="Data";encryptable=footer;wipeingui;
+none            swap     /dev/block/zram0          flags=display="None";
 
 # Removable storage
 #/external_sd    auto    /dev/block/mmcblk1p1   flags=storage;wipeingui;removable
