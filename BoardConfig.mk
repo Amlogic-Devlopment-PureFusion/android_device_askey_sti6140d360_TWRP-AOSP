@@ -123,7 +123,7 @@ TWRP_EVENT_LOGGING := false
 #TW_OEM_BUILD := true
 
 # TWRP recovery.fstab
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
 
 # Supply a custom init.rc for the recovery
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.amlogic.rc
@@ -178,8 +178,8 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # Decryption support for /data
-TW_INCLUDE_CRYPTO := false
-TW_INCLUDE_CRYPTO_FBE := false
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
 BOARD_USES_METADATA_PARTITION := false
 
