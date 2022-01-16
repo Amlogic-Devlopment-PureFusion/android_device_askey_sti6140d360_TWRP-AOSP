@@ -29,7 +29,7 @@ odm                           /odm           ext4    rw wait,logical,first_stage
 /dev/block/metadata           /metadata      ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic                       display="Metadata",backup=1,wait,check,formattable,first_stage_mount
 /dev/block/tee                /tee           ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic                       wait,check,formattable,wipeingui
 /dev/block/cache              /cache         ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic                       wait,check,formattable,wipeingui
-/dev/block/data               /data          ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic                       wait,check,fileencryption=aes-256-xts,quota,formattable,reservedsize=32M,wipeingui,encryptable=footer
+/dev/block/data               /data          ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic                       wait,check,fileencryption=aes-256-cts,quota,formattable,reservedsize=32M,wipeingui,encryptable=footer
 /dev/block/mmcblk1p1          /sdcard        vfat    defaults    defaults
 /dev/block/mmcblk1p2          /sdcard        vfat    defaults    defaults
 /dev/block/mmcblk1p3          /sdcard        vfat    defaults    defaults
