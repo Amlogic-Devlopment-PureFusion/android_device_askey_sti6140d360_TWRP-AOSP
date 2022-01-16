@@ -7,10 +7,10 @@
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------- ###
-system                        /system        ext4    rw wait,logical,first_stage_mount,seclabel,nodev,relatime,inode_readahead_blks=8    wipeingui
-vendor                        /vendor        ext4    rw wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
-product                       /product       ext4    rw wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
-odm                           /odm           ext4    rw wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
+system                        /system        ext4    ro wait,logical,first_stage_mount,seclabel,nodev,relatime,inode_readahead_blks=8    wipeingui
+vendor                        /vendor        ext4    ro wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
+product                       /product       ext4    ro wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
+odm                           /odm           ext4    ro wait,logical,first_stage_mount,seclabel,relatime,inode_readahead_blks=8          wipeingui
 
 
 # device                     mountpoint      fs      options                                                                             flags?    (fstab    version    2)
