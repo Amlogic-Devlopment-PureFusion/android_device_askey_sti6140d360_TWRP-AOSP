@@ -51,8 +51,8 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/sda1               /usb-otg       auto    defaults    storage,wipeingui,removable,
 /dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec    display="Factory",backup=1,wait,check
 
-/dev/usb-ffs/fastboot        /fastboot       functionfs    defaults   defaults
-/dev/usb-ffs/adb             /adb            functionfs    defaults   defaults
+#/dev/usb-ffs/fastboot        /fastboot       functionfs    defaults   defaults
+#/dev/usb-ffs/adb             /adb            functionfs    defaults   defaults
 
 # device                     mountpoint                                   fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------- ###
