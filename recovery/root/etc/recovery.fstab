@@ -56,14 +56,14 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 
 # device                     mountpoint                                   fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------- ###
-/dev/block/dm-4               /apex/com.android.conscrypt@290000000      ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.conscrypt                ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.media@290000000          ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.media                    ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.media.swcodec@290000000  ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.media.swcodec            ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.resolv@290000000         ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
-/dev/block/dm-4               /apex/com.android.resolv                   ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.conscrypt@290000000      ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.conscrypt                ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.media@290000000          ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.media                    ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.media.swcodec@290000000  ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.media.swcodec            ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.resolv@290000000         ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
+#/dev/block/dm-4               /apex/com.android.resolv                   ext4 ro,seclabel,nodev,relatime,inode_readahead_blks=8
 
 /devices/*dwc3/xhci-hcd.0.auto/usb?/*/host*/target*/block/sd*  auto             auto      defaults                       voldmanaged=usb:auto,encryptable=userdata
 /devices/*dwc3/xhci-hcd.0.auto/usb?/*/host*/target*/block/sr*  auto             auto      defaults                       voldmanaged=sr0:auto,encryptable=userdata
