@@ -170,7 +170,7 @@ TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
 TW_SCREEN_BLANK_ON_BOOT := false
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_DEVICE_VERSION := $(shell date '+%Y%m%d') by Eliminater74
+TW_DEVICE_VERSION := $(shell date '+%Y%m%d-%H%M%S') by Eliminater74
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
