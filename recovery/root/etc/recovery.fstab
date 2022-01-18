@@ -7,10 +7,10 @@
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
 ### -------dynamic-partition------------------------------------------------------------------------------------------------------------------ ###
-system                        /system        ext4    ro,seclabel,nodev,relatime,inode_readahead_blks=8    wait,logical,first_stage_mount,wipeingui
+system                        /system        ext4    ro,seclabel,nodev,relatime,inode_readahead_blks=8    wait,logical,first_stage_mount
 vendor                        /vendor        ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
-product                       /product       ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount,wipeingui
-odm                           /odm           ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount,wipeingui
+product                       /product       ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
+odm                           /odm           ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
 
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
@@ -25,7 +25,13 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/metadata           /metadata      ext4    rw,seclabel,nosuid,nodev,noatime,nodelalloc,errors=panic,data=ordered    display="Metadata",backup=1,wait,check,formattable,first_stage_mount
 /dev/block/tee                /tee           ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable
 /dev/block/cache              /cache         ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable
-/dev/block/data               /data          ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,fileencryption=aes-256-xts,quota,formattable,reservedsize=32M
+/dev/block/data               /data          ext4    rw,seclabel,nosuid,nodev,noatime,nodelalloc,resgid=1065,errors=panic,data=ordered    wait,check,fileencryption=aes-256-xts,quota,formattable,reservedsize=32M
+/dev/block/dm-2               /system_image  emmc    defaults     display="System image",backup=1,flashimg=1
+/dev/block/dm-1               /vendor_image  emmc    defaults     display="Vendor image",backup=1,flashimg=1
+/dev/block/dm-3               /odm_image     emmc    defaults     display="ODM image",backup=1,flashimg=1
+/dev/block/dm-0               /product_image emmc    defaults     display="Product image",backup=1,flashimg=1
+
+
 /dev/block/mmcblk1p1          /sdcard        vfat    defaults    defaults
 /dev/block/mmcblk1p2          /sdcard        vfat    defaults    defaults
 /dev/block/mmcblk1p3          /sdcard        vfat    defaults    defaults
@@ -44,6 +50,9 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/zram0              none           swap    defaults    1wait,zramsize=268435456
 /dev/block/sda1               /usb-otg       auto    defaults    storage,wipeingui,removable,
 /dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec    wait,check
+
+/dev/usb-ffs/fastboot        /fastboot       emmc    defaults   defaults
+/dev/usb-ffs/adb             /adb            emmc    defaults   defaults
 
 # device                     mountpoint                                   fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------- ###
