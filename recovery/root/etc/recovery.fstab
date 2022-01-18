@@ -7,10 +7,10 @@
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
 ### -------dynamic-partition------------------------------------------------------------------------------------------------------------------ ###
-system                        /system        ext4    ro,seclabel,nodev,relatime,inode_readahead_blks=8    display="System",backup=1,flashimg=1,wait,logical,first_stage_mount
-vendor                        /vendor        ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="Vendor",backup=1,flashimg=1,wait,logical,first_stage_mount
-product                       /product       ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="Product",backup=1,flashimg=1,wait,logical,first_stage_mount
-odm                           /odm           ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="ODM",backup=1,flashimg=1,wait,logical,first_stage_mount
+system                        /system        ext4    ro,barrier=1          display="System",backup=1,flashimg=1,wait,avb=vbmeta,logical,first_stage_mount
+vendor                        /vendor        ext4    ro,barrier=1          display="Vendor",backup=1,flashimg=1,wait,avd,logical,first_stage_mount
+product                       /product       ext4    ro,barrier=1          display="Product",backup=1,flashimg=1,wait,avd,logical,first_stage_mount
+odm                           /odm           ext4    ro,barrier=1          display="ODM",backup=1,flashimg=1,wait,avd,logical,first_stage_mount
 
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
