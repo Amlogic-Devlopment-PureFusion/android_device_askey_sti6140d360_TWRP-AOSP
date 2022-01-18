@@ -7,10 +7,10 @@
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
 ### -------dynamic-partition------------------------------------------------------------------------------------------------------------------ ###
-system                        /system        ext4    ro,seclabel,nodev,relatime,inode_readahead_blks=8    wait,logical,first_stage_mount
-vendor                        /vendor        ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
-product                       /product       ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
-odm                           /odm           ext4    ro,seclabel,relatime,inode_readahead_blks=8          wait,logical,first_stage_mount
+system                        /system        ext4    ro,seclabel,nodev,relatime,inode_readahead_blks=8    display="System",backup=1,flashimg=1,wait,logical,first_stage_mount
+vendor                        /vendor        ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="Vendor",backup=1,flashimg=1,wait,logical,first_stage_mount
+product                       /product       ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="Product",backup=1,flashimg=1,wait,logical,first_stage_mount
+odm                           /odm           ext4    ro,seclabel,relatime,inode_readahead_blks=8          display="ODM",backup=1,flashimg=1,wait,logical,first_stage_mount
 
 
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
@@ -31,8 +31,8 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/dm-0               /product_image emmc    defaults                                             display="Product image",backup=1,flashimg=1
 /dev/block/dm-3               /odm_image     emmc    defaults                                             display="ODM image",backup=1,flashimg=1
 
-/dev/block/sd##               /udisk         auto    defaults                                             defaults
-/dev/block/loop               auto           loop    defaults                                             voldmanaged=loop:auto
+#/dev/block/sd##              #/udisk         auto    defaults                                             defaults
+/dev/block/loop               #auto           loop    defaults                                             voldmanaged=loop:auto
 /dev/block/zram0              none           swap    defaults                                             1wait,zramsize=268435456
 /dev/block/sda1               /usb-otg       auto    defaults                                             storage,wipeingui,removable,
 /dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec                     display="Factory",backup=1,wait,check
