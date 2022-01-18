@@ -16,26 +16,29 @@ odm                           /odm           ext4    ro,barrier=1          displ
 # device                     mountpoint      fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------------------------------------ ###
 /dev/block/bootloader         /bootloader    emmc    defaults                                             display="Bootloader",backup=1,flashimg=1
+/dev/block/boot               /boot          emmc    defaults                                             display="Boot",backup=1,flashimg=1,first_stage_mount,nofail
 /dev/block/logo               /logo          emmc    defaults                                             display="Logo",backup=1,flashimg=1
 /dev/block/vbmeta             /vbmeta        emmc    defaults                                             display="Vbmeta",backup=1,flashimg=1,wipeingui
 /dev/block/recovery           /recovery      emmc    defaults                                             display="Recovery",backup=1,flashimg=1,first_stage_mount,nofail
-/dev/block/boot               /boot          emmc    defaults                                             display="Boot",backup=1,flashimg=1,first_stage_mount,nofail
 /dev/block/misc               /misc          emmc    defaults                                             display="Misc",backup=1,flashimg=1,wipeingui,
+/dev/block/dm-2               /system_image  emmc    defaults                                             display="System image",backup=1,flashimg=1
+/dev/block/dm-1               /vendor_image  emmc    defaults                                             display="Vendor image",backup=1,flashimg=1
+/dev/block/dm-0               /product_image emmc    defaults                                             display="Product image",backup=1,flashimg=1
+/dev/block/dm-3               /odm_image     emmc    defaults                                             display="ODM image",backup=1,flashimg=1
 /dev/block/param              /param         ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,quota,formattable
 /dev/block/metadata           /metadata      ext4    rw,seclabel,nosuid,nodev,noatime,nodelalloc,errors=panic,data=ordered    display="Metadata",backup=1,wait,check,formattable,first_stage_mount
 /dev/block/tee                /tee           ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable
 /dev/block/cache              /cache         ext4    noatime,nosuid,nodev,nodelalloc,nomblk_io_submit,errors=panic    wait,check,formattable
 /dev/block/data               /data          ext4    noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier    latemount,wait,check,fileencryption=ice,keydirectory=/metadata/vold/metadata_encryption,quota,formattable,reservedsize=128M,checkpoint=fs
-/dev/block/dm-2               /system_image  emmc    defaults                                             display="System image",backup=1,flashimg=1
-/dev/block/dm-1               /vendor_image  emmc    defaults                                             display="Vendor image",backup=1,flashimg=1
-/dev/block/dm-0               /product_image emmc    defaults                                             display="Product image",backup=1,flashimg=1
-/dev/block/dm-3               /odm_image     emmc    defaults                                             display="ODM image",backup=1,flashimg=1
 
 #/dev/block/sd##              /udisk         auto    defaults                                             defaults
 #/dev/block/loop               auto           loop    defaults                                             voldmanaged=loop:auto
 /dev/block/zram0              none           swap    defaults                                             1wait,zramsize=268435456
-/dev/block/sda1               /usb-otg       auto    defaults                                             storage,wipeingui,removable,
 /dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec                     display="Factory",backup=1,wait,check
+/dev/block/sda1               /usb-otg       auto    defaults                                             storage,wipeingui,removable
+
+
+
 
 #/dev/usb-ffs/fastboot        /fastboot       functionfs    defaults   defaults
 #/dev/usb-ffs/adb             /adb            functionfs    defaults   defaults
