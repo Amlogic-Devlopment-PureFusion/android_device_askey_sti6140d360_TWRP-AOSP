@@ -28,8 +28,8 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/data               /data          ext4    rw,seclabel,nosuid,nodev,noatime,nodelalloc,resgid=1065,errors=panic,data=ordered    wait,check,fileencryption=aes-256-xts,quota,formattable,reservedsize=32M
 /dev/block/dm-2               /system_image  emmc    defaults     display="System image",backup=1,flashimg=1
 /dev/block/dm-1               /vendor_image  emmc    defaults     display="Vendor image",backup=1,flashimg=1
-/dev/block/dm-3               /odm_image     emmc    defaults     display="ODM image",backup=1,flashimg=1
 /dev/block/dm-0               /product_image emmc    defaults     display="Product image",backup=1,flashimg=1
+/dev/block/dm-3               /odm_image     emmc    defaults     display="ODM image",backup=1,flashimg=1
 
 
 /dev/block/mmcblk1p1          /sdcard        vfat    defaults    defaults
@@ -49,10 +49,10 @@ odm                           /odm           ext4    ro,seclabel,relatime,inode_
 /dev/block/loop               auto           loop    defaults    voldmanaged=loop:auto
 /dev/block/zram0              none           swap    defaults    1wait,zramsize=268435456
 /dev/block/sda1               /usb-otg       auto    defaults    storage,wipeingui,removable,
-/dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec    wait,check
+/dev/block/factory            /factory       vfat    noatime,nodiratime,nosuid,noexec    display="Factory",backup=1,wait,check
 
-/dev/usb-ffs/fastboot        /fastboot       emmc    defaults   defaults
-/dev/usb-ffs/adb             /adb            emmc    defaults   defaults
+/dev/usb-ffs/fastboot        /fastboot       functionfs    defaults   defaults
+/dev/usb-ffs/adb             /adb            functionfs    defaults   defaults
 
 # device                     mountpoint                                   fs   options      flags?    (fstab    version    2)
 ### ------------------------------------------------------------------------------------------------------------- ###
