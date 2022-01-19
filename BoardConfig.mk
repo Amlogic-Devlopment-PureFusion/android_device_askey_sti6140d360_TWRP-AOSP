@@ -51,9 +51,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
-# Metadata
-BOARD_USES_METADATA_PARTITION := true
-
 # NTFS Support
 TW_INCLUDE_FUSE_NTFS := true
 TW_INCLUDE_NTFS_3G := true
@@ -103,7 +100,7 @@ TARGET_KERNEL_CONFIG := sti6140d360_defconfig
 # Recovery
 # auto copy files placed in device/$VENDOR/$DEVICENAME/recovery/root inside recovery ramdisk (e.g. init.recivery*.rc which get removed from recoveryramdisk by default).
 # example: for Onn Android TV Box ( set your device tree's location )
-#TARGET_RECOVERY_DEVICE_DIRS += device/askey/sti6140d360
+TARGET_RECOVERY_DEVICE_DIRS += device/askey/sti6140d360
 
 # Misc
 TW_MTP_DEVICE := /dev/mtp_usb
@@ -123,7 +120,7 @@ TWRP_EVENT_LOGGING := false
 #TW_OEM_BUILD := true
 
 # TWRP recovery.fstab
-#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
 
 # Supply a custom init.rc for the recovery
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.recovery.amlogic.rc
@@ -164,7 +161,6 @@ BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 TW_USE_NEW_MINADBD := true
 TW_USE_TOOLBOX := true
-#TW_INCLUDE_NTFS_3G := true
 
 TW_INCLUDE_LOGICAL := product odm
 TW_EXTRA_LANGUAGES := false
@@ -181,7 +177,7 @@ PLATFORM_VERSION := 16.1.0
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
-BOARD_USES_METADATA_PARTITION := false
+BOARD_USES_METADATA_PARTITION := true
 
 # Tool
 #TW_INCLUDE_REPACKTOOLS := true
@@ -196,5 +192,5 @@ TW_NO_LEGACY_PROPS := true
 # Disable the battery percentage for devices where it doesn't work properly
 TW_NO_BATT_PERCENT := true
 # Remove exFAT formatting binaries
-TW_NO_EXFAT := true
+TW_NO_EXFAT := false
 ### ----------------------------------- ###
